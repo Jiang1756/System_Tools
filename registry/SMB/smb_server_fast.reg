@@ -1,0 +1,6 @@
+; 下面是 SMB 服务器端（别人来访问你的共享）
+; 路径：HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
+"RequireSecuritySignature"=dword:00000000
+"EnableSecuritySignature"=dword:00000000

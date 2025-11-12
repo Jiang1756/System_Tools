@@ -1,0 +1,21 @@
+Windows Registry Editor Version 5.00
+
+; ① 关闭策略：Require use of specific security layer for remote (RDP) connections
+;    等价于组策略里设置为“未配置”
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+"SecurityLayer"=-
+
+; ② 实际 RDP 监听使用 RDP Security Layer（最简单、握手最快）
+;    路径是系统真实使用的监听端口配置
+;    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp
+;    SecurityLayer:
+;      0 = RDP（只用 RDP 安全层，不用 TLS）
+;      1 = Negotiate（协商：能 TLS 就用 TLS，不行退回 RDP）
+;      2 = SSL/TLS（始终用 TLS）
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]
+"SecurityLayer"=dword:00000000
+
+; ③（可选但推荐）把最小加密等级设为“客户端兼容”，避免额外高开销
+;    1 = Client Compatible（大部分 Windows 默认）
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]
+"MinEncryptionLevel"=dword:00000001
