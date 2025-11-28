@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+; 只针对 SMB 客户端（访问别人的共享）
+; 路径：HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters]
+; 不再“要求” SMB 签名
+; RequireSecuritySignature:
+;   0 = 不要求
+;   1 = 必须签名（Win11 24H2 默认偏向 1）
+"RequireSecuritySignature"=dword:00000000
+
+; 兼容 SMB1 的开关，SMB2+ 实际主要看 RequireSecuritySignature
+; 设成 0 相当于尽量不主动启用签名
+"EnableSecuritySignature"=dword:00000000

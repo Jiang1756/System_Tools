@@ -1,0 +1,28 @@
+Windows Registry Editor Version 5.00
+
+; ================================
+; 删除右键 "Git GUI Here"
+; ================================
+
+; 文件夹背景右键菜单中的 "Git GUI Here"
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\git_gui]
+
+; 文件夹图标右键菜单中的 "Git GUI Here"
+[-HKEY_CLASSES_ROOT\Directory\shell\git_gui]
+
+; 所有文件类型右键菜单中的 "Git GUI Here"（有的版本会创建）
+[-HKEY_CLASSES_ROOT\*\shell\git_gui]
+
+
+; ================================
+; 删除右键 "Git Bash Here"
+; ================================
+
+; 文件夹背景右键菜单中的 "Git Bash Here"
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\git_shell]
+
+; 文件夹图标右键菜单中的 "Git Bash Here"
+[-HKEY_CLASSES_ROOT\Directory\shell\git_shell]
+
+; 所有文件类型右键菜单中的 "Git Bash Here"
+[-HKEY_CLASSES_ROOT\*\shell\git_shell]

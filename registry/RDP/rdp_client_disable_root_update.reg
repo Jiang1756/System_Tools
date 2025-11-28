@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+; 关闭自动根证书更新，避免 RDP 连接阶段去访问 Windows Update
+; 组策略等价项：
+;  计算机配置 -> 管理模板 -> 系统 -> Internet 通信管理 -> Internet 通信设置
+;  -> Turn off Automatic Root Certificates Update = Enabled
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]
+"DisableRootAutoUpdate"=dword:00000001
